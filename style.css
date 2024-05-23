@@ -1,58 +1,71 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-*
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style: none;
-    text-decoration: none;
-    font-family: "Poppins", sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Space%20Grotesk:700|Space%20Grotesk:400');
+
+:root {
+/*  change this for scaling  */
+  --m: 4rem;
+  
+  --red: #FF6565;
+  --pink: #FF64F9;
+  --purple: #6B5FFF;
+  --blue: #4D8AFF;
+  --green: #5BFF89;
+  --yellow: #FFEE55;
+  --orange: #FF6D1B;
+  
 }
-body
-{
-    min-height: 100vh;
-    min-width: 400px;
-    overflow: hidden;
+body {
+  background-color: #141516;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
-header
-{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 100%;
-    height: 80px;
-    padding: 0 5%;
-    color: #311822;
-    font-size: 18px;
+
+button {
+  border: calc(0.08 * var(--m)) solid transparent;
+  position: relative;
+  color: #F3F3F3;
+  font-family: 'Space Grotesk';
+  font-size: var(--m);
+  border-radius: calc(0.7 * var(--m));
+  padding: calc(0.5 * var(--m)) calc(1 * var(--m));
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  
+  background:linear-gradient(#121213, #121213), linear-gradient(#121213 50%, rgba(18, 18, 19, 0.6) 80%, rgba(18, 18, 19, 0)),  linear-gradient(90deg, var(--orange), var(--yellow), var(--green), var(--blue), var(--purple), var(--pink), var(--red));
+  background-origin: border-box;
+  background-clip: padding-box, border-box, border-box;
+  background-size: 200%;
+  animation: animate 2s infinite linear;
 }
-header .Logo 
-{
-    color: #311822;
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-right: auto;
+
+button::before {
+  content: '';
+  background: linear-gradient(90deg, var(--orange), var(--yellow), var(--green), var(--blue), var(--purple), var(--pink), var(--red));
+  height: 30%;
+  width: 60%;
+  position: absolute;
+  bottom: -20%;
+  z-index: -5;
+  background-size: 200%;
+  animation: animate 2s infinite linear;
+  filter: blur(calc(0.8 * var(--m)));
 }
-header nav
-{
-    display: flex;
-    align-items: center;
+
+button:hover, button:hover::before {
+  animation: animate 0.5s infinite linear;
 }
-header nav .menu
-{
-    display: flex;
-    align-items: center;
+
+@keyframes animate {
+  0% {background-position: 0}
+  100% {background-position: 200%}
 }
-header nav .menu li a
-{
-    position: relative;
-    color: #311822;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 0.4rem;
-    transition: color 0.4s ease;
-}
-header nav .menu li a:hover
-{
-    color:#fff;
+
+@media screen and (max-width: 1000px) {
+  :root {
+    --m: 2rem;
+  }
 }
